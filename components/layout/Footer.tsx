@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export function Footer() {
     return (
@@ -48,7 +49,7 @@ export function Footer() {
                 </div>
             </div>
             <div className="flex flex-col gap-3 border-t border-[#34332f] pt-[22px] text-[10px] leading-[1.5] text-[#77736c] lg:flex-row lg:justify-between">
-                <span>© 2026 Majestic City. All Rights Reserved.</span>
+                <span>© 2026 Design and Developed by <Link href="https://www.shawebdesign.com" className="hover:underline" target="_blank" rel="noopener noreferrer">Sha web design</Link>. All Rights Reserved.</span>
                 <span className="flex gap-4"><a href="#footer">Privacy Policy</a><a href="#footer">Terms & Conditions</a>
                 </span>
             </div>

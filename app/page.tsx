@@ -27,7 +27,7 @@ const images = {
     stairOne: "/images/Library - 1 of 4.jpeg",
     stairTwo: "/images/Library - 2 of 4.jpeg",
     stairWide: "/images/Library - 3 of 4.jpeg",
-    cinema: "/images/cinema.jpeg",
+    cinema: "/images/cinema-img.jpeg",
     shopping: [
         "/images/DSC00190.jpg",
         "/images/DSC00243.jpg",

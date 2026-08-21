@@ -27,7 +27,7 @@ const images = {
     stairOne: "/images/Library - 1 of 4.jpeg",
     stairTwo: "/images/Library - 2 of 4.jpeg",
     stairWide: "/images/Library - 3 of 4.jpeg",
-    cinema: "/images/DSC00234.jpg",
+    cinema: "/images/cinema.jpeg",
     shopping: [
         "/images/DSC00190.jpg",
         "/images/DSC00243.jpg",
@@ -186,7 +186,7 @@ export default function Home() {
                                 sizes="(max-width: 768px) 86vw, 25vw"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                            <div className="absolute bottom-[17px] left-[17px] right-[17px] lg:bottom-[25px] lg:left-[25px] lg:right-[25px]"><span className="text-[10px] tracking-[.16em] text-[#c7af82]">0{index + 1}</span><h3 className="my-3 text-xl font-light leading-none tracking-[-.04em] lg:mb-5 lg:text-[clamp(1.25rem,2.1vw,2.2rem)]">{name}</h3>
+                            <div className="absolute bottom-[17px] left-[17px] right-[17px] lg:bottom-[25px] lg:left-[25px] lg:right-[25px]"><h3 className="my-3 text-xl font-light leading-none tracking-[-.04em] lg:mb-5 lg:text-[clamp(1.25rem,2.1vw,2.2rem)]">{name}</h3>
                                 <ArrowDownRight className="transition-transform group-hover:translate-x-1 group-hover:translate-y-1" size={21} />
                             </div>
                         </Link>
@@ -314,7 +314,7 @@ export default function Home() {
                 </div>
                 <div className="mt-7 flex flex-col items-start gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <p className="max-w-[360px] text-sm leading-[1.7] text-[#a9a39a]">Your next film night starts here. Discover what&apos;s playing and make an evening of it.</p>
-                    <a className="inline-flex items-center gap-2.5 border border-[#c7af82] px-[18px] py-[13px] text-[10px] font-semibold uppercase tracking-[.12em] text-[#c7af82] transition hover:bg-[#c7af82] hover:text-[#151515]" href="#directory">Explore Majestic Cineplex <ArrowRight size={16} /></a>
+                    <a className="inline-flex items-center gap-2.5 border border-[#c7af82] px-[18px] py-[13px] text-[10px] font-semibold uppercase tracking-[.12em] text-[#c7af82] transition hover:bg-[#c7af82] hover:text-[#151515]" href="#directory">Book Now <ArrowRight size={16} /></a>
                 </div>
             </section>
 

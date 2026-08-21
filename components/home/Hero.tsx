@@ -8,8 +8,8 @@ import { useEffect, useState } from "react";
 const heroSlides = [
     { src: "/images/Library - 4 of 4.jpeg", alt: "Majestic City Colombo architecture" },
     { src: "/images/Library - 1 of 4.jpeg", alt: "Majestic City Colombo interior" },
-    { src: "/images/Library - 2 of 4.jpeg", alt: "Majestic City Colombo shopping destination" },
-    { src: "/images/Library - 3 of 4.jpeg", alt: "Majestic City Colombo experiences" },
+    { src: "/images/Library-4banner.jpeg", alt: "Majestic City Colombo shopping destination" },
+    { src: "/images/Library-3banner.jpeg", alt: "Majestic City Colombo experiences" },
 ];
 
 export function Hero() {

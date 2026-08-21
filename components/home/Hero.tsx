@@ -1,23 +1,49 @@
 "use client";
 
-import { ArrowDownRight, ArrowRight } from "lucide-react";
+import { ArrowDownRight, ArrowLeft, ArrowRight, Pause, Play } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-const heroImage = "/images/Library - 4 of 4.jpeg";
+const heroSlides = [
+    { src: "/images/Library - 4 of 4.jpeg", alt: "Majestic City Colombo architecture" },
+    { src: "/images/Library - 1 of 4.jpeg", alt: "Majestic City Colombo interior" },
+    { src: "/images/Library - 2 of 4.jpeg", alt: "Majestic City Colombo shopping destination" },
+    { src: "/images/Library - 3 of 4.jpeg", alt: "Majestic City Colombo experiences" },
+];
 
 export function Hero() {
+    const [activeSlide, setActiveSlide] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
+
+    useEffect(() => {
+        if (isPaused) return;
+
+        const interval = window.setInterval(() => {
+            setActiveSlide((currentSlide) => (currentSlide + 1) % heroSlides.length);
+        }, 6000);
+
+        return () => window.clearInterval(interval);
+    }, [isPaused]);
+
+    const goToSlide = (slide: number) => setActiveSlide(slide);
+    const goToPreviousSlide = () => setActiveSlide((activeSlide - 1 + heroSlides.length) % heroSlides.length);
+    const goToNextSlide = () => setActiveSlide((activeSlide + 1) % heroSlides.length);
+
     return (
         <section className="relative min-h-[590px] h-[84vh] overflow-hidden bg-[#27251f] text-white lg:h-[min(95vh,930px)] lg:min-h-[670px]" id="top">
             <div className="absolute inset-0">
-                <Image
-                    src={heroImage}
-                    alt="Majestic City Colombo architecture"
-                    fill
-                    priority
-                    sizes="100vw"
-                    className="object-cover object-center"
-                />
+                {heroSlides.map((slide, slideIndex) => (
+                    <Image
+                        key={slide.src}
+                        src={slide.src}
+                        alt={slide.alt}
+                        fill
+                        priority={slideIndex === 0}
+                        sizes="100vw"
+                        className={`object-cover object-center transition-opacity duration-1000 ease-in-out ${activeSlide === slideIndex ? "opacity-100" : "opacity-0"}`}
+                    />
+                ))}
             </div>
             <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,10,9,.72)_0%,rgba(10,10,9,.25)_60%,rgba(10,10,9,.15)),linear-gradient(0deg,rgba(10,10,9,.5),transparent_45%)]" />
             <div className="absolute bottom-[17%] left-6 right-6 lg:bottom-[10%] lg:left-[8vw] lg:right-auto space-y-4">
@@ -46,6 +72,45 @@ export function Hero() {
                 <span className="flex items-center gap-2.5 text-[8px] uppercase tracking-[.15em] lg:text-[8px] ">
                     <ArrowDownRight size={16} /> Scroll to discover
                 </span>
+                <div className="flex items-center gap-3" aria-label="Hero slideshow controls">
+                    <button
+                        type="button"
+                        aria-label="Previous slide"
+                        className="grid h-9 w-9 place-items-center border border-white/40 transition hover:border-white hover:bg-white hover:text-black"
+                        onClick={goToPreviousSlide}
+                    >
+                        <ArrowLeft size={15} />
+                    </button>
+                    <div className="flex items-center gap-2" role="tablist" aria-label="Hero slides">
+                        {heroSlides.map((slide, slideIndex) => (
+                            <button
+                                key={slide.src}
+                                type="button"
+                                role="tab"
+                                aria-label={`Go to slide ${slideIndex + 1}`}
+                                aria-selected={activeSlide === slideIndex}
+                                className={`h-1 transition-all ${activeSlide === slideIndex ? "w-8 bg-[#c7af82]" : "w-3 bg-white/50 hover:bg-white"}`}
+                                onClick={() => goToSlide(slideIndex)}
+                            />
+                        ))}
+                    </div>
+                    <button
+                        type="button"
+                        aria-label={isPaused ? "Play slideshow" : "Pause slideshow"}
+                        className="grid h-9 w-9 place-items-center border border-white/40 transition hover:border-white hover:bg-white hover:text-black"
+                        onClick={() => setIsPaused((paused) => !paused)}
+                    >
+                        {isPaused ? <Play size={14} /> : <Pause size={14} />}
+                    </button>
+                    <button
+                        type="button"
+                        aria-label="Next slide"
+                        className="grid h-9 w-9 place-items-center border border-white/40 transition hover:border-white hover:bg-white hover:text-black"
+                        onClick={goToNextSlide}
+                    >
+                        <ArrowRight size={15} />
+                    </button>
+                </div>
             </div>
         </section>
     );
